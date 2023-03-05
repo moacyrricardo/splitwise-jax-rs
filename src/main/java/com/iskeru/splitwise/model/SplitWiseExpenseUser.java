@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.iskeru.splitwise.users.model.SplitWiseUser;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

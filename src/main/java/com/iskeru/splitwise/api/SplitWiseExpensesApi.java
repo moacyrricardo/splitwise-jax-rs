@@ -27,7 +27,7 @@ public interface SplitWiseExpensesApi {
 			@QueryParam("friend_id") Long friendId,
 			// 2012-07-27T06:17:09Z
 			@QueryParam("dated_after") //
-			@JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ss'Z'") //
+			@JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ssX") //
 			Date after,
 			// 2012-07-27T06:17:09Z
 			@QueryParam("dated_before") String before);

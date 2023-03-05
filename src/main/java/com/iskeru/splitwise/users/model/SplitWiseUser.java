@@ -1,4 +1,4 @@
-package com.iskeru.splitwise.model;
+package com.iskeru.splitwise.users.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
