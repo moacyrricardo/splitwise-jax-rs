@@ -1,4 +1,4 @@
-package com.iskeru.splitwise.model;
+package com.iskeru.splitwise.expenses.model;
 
 import java.math.BigDecimal;
 

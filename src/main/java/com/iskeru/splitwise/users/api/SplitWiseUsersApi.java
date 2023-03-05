@@ -14,7 +14,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.iskeru.splitwise.model.SplitWiseExpense;
+import com.iskeru.splitwise.expenses.model.SplitWiseExpense;
 
 @Path("/api/v3.0/")
 @Consumes({ MediaType.APPLICATION_JSON })
