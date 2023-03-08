@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.iskeru.splitwise.utils.SplitWiseConstants;
 
 import lombok.AllArgsConstructor;
@@ -21,8 +23,9 @@ import lombok.NoArgsConstructor;
 public class SplitWiseUpdateExpense {
 	private static final String SEPARATOR = "__";
 	private Long id;
+	@JsonProperty("group_id")
 	@Builder.Default
-	private Long group_id = SplitWiseConstants.NO_GROUP;
+	private Long groupId = SplitWiseConstants.NO_GROUP;
 	private BigDecimal cost;
 	private String description;
 	private String details;
