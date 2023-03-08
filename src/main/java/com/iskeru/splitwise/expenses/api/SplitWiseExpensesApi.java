@@ -31,7 +31,8 @@ public interface SplitWiseExpensesApi {
 			@JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ssX") //
 			Date after,
 			// 2012-07-27T06:17:09Z
-			@QueryParam("dated_before") String before);
+			@QueryParam("dated_before") String before,
+			@QueryParam("group_id") Long groupId);
 
 	@GET
 	@Path("/get_expense/{id}")
