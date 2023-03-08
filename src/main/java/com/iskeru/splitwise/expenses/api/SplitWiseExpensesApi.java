@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iskeru.splitwise.expenses.model.SplitWiseExpense;
+import com.iskeru.splitwise.expenses.model.SplitWiseUpdateExpense;
 
 @Path("/api/v3.0/")
 @Consumes({ MediaType.APPLICATION_JSON })
@@ -40,6 +41,6 @@ public interface SplitWiseExpensesApi {
 	@POST
 	@Path("/update_expense/{id}")
 	public SplitWiseExpensesResponse update(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
-			@PathParam(value = "id") Long id, SplitWiseExpense expense);
+			@PathParam(value = "id") Long id, SplitWiseUpdateExpense expense);
 
 }

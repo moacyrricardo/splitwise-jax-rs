@@ -10,6 +10,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.iskeru.splitwise.utils.SplitWiseConstants;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,7 +28,7 @@ public class SplitWiseExpense {
 	private String description;
 
 	@JsonProperty("group_id")
-	private Long groupId;
+	private Long groupId = SplitWiseConstants.NO_GROUP;
 
 	@JsonProperty("user_id")
 	private Long userId;
