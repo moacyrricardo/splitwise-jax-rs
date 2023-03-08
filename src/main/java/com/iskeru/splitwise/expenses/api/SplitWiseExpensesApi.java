@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iskeru.splitwise.expenses.model.SplitWiseExpense;
+import com.iskeru.splitwise.expenses.model.SplitWiseUpdateExpense;
 
 @Path("/api/v3.0/")
 @Consumes({ MediaType.APPLICATION_JSON })
@@ -30,7 +31,8 @@ public interface SplitWiseExpensesApi {
 			@JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ssX") //
 			Date after,
 			// 2012-07-27T06:17:09Z
-			@QueryParam("dated_before") String before);
+			@QueryParam("dated_before") String before,
+			@QueryParam("group_id") Long groupId);
 
 	@GET
 	@Path("/get_expense/{id}")
@@ -40,6 +42,6 @@ public interface SplitWiseExpensesApi {
 	@POST
 	@Path("/update_expense/{id}")
 	public SplitWiseExpensesResponse update(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
-			@PathParam(value = "id") Long id, SplitWiseExpense expense);
+			@PathParam(value = "id") Long id, SplitWiseUpdateExpense expense);
 
 }

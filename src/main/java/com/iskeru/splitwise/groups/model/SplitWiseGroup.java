@@ -1,10 +1,9 @@
-package com.iskeru.splitwise.expenses.api;
+package com.iskeru.splitwise.groups.model;
 
 import java.util.List;
-import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.iskeru.splitwise.expenses.model.SplitWiseExpense;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,8 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SplitWiseExpensesResponse {
-	private List<SplitWiseExpense> expenses;
-	
-	private Map<String, Object> errors;
+public class SplitWiseGroup {
+	private Long id;
+	private String name;
+	@JsonProperty("group_type")
+	private String groupType;
+	private List<SplitWiseGroup> members;
 }
