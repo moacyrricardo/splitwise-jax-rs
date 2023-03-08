@@ -26,6 +26,7 @@ public class SplitWiseExpense {
 	@JsonProperty("currency_code")
 	private String currency;
 	private String description;
+	private String details;
 
 	@JsonProperty("group_id")
 	private Long groupId = SplitWiseConstants.NO_GROUP;
