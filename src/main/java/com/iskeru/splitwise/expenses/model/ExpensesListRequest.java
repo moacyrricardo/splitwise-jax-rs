@@ -34,7 +34,7 @@ public class ExpensesListRequest {
 		return ExpensesListRequest.builder()//
 				.after(getAfter()).before(getBefore())//
 				.friendId(getFriendId()).groupId(getGroupId())//
-				.limit(getLimit()).offset(getOffset()+getLimit()+1)//
+				.limit(getLimit()).offset(getOffset()+getLimit())//
 				.build();
 	}
 }
