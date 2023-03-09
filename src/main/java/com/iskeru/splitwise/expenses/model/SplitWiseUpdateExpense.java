@@ -37,18 +37,25 @@ public class SplitWiseUpdateExpense {
 	private List<SplitWiseExpenseUser> users;
 
 	// repeat_interval="never"
+	@JsonProperty("repeat_interval")
 	private String repeatInterval;
 	// currency_code="USD"
-	private String currency_code;
+	@JsonProperty("currency_code")
+	private String currencyCode;
+
+	@JsonProperty("split_equally")
+	private Boolean splitEqually;
 
 	@JsonAnyGetter
 	public Map<String, Object> getProperties() {
 		Map<String, Object> a = new HashMap<>();
-		for (int i = 0; i < users.size(); i++) {
-			SplitWiseExpenseUser user = users.get(i);
-			a.put(createKey(user, i, "user_id"), user.getUserId());
-			a.put(createKey(user, i, "paid_share"), user.getPaidShare().toString());
-			a.put(createKey(user, i, "owed_share"), user.getOwedShare().toString());
+		if (users != null) {
+			for (int i = 0; i < users.size(); i++) {
+				SplitWiseExpenseUser user = users.get(i);
+				a.put(createKey(user, i, "user_id"), user.getUserId());
+				a.put(createKey(user, i, "paid_share"), user.getPaidShare().toString());
+				a.put(createKey(user, i, "owed_share"), user.getOwedShare().toString());
+			}
 		}
 		return a;
 	}
