@@ -2,6 +2,7 @@ package com.iskeru.splitwise.expenses.api;
 
 import java.util.Date;
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -14,8 +15,9 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.iskeru.splitwise.expenses.model.SplitWiseExpense;
+import com.iskeru.splitwise.expenses.model.ExpensesListRequest;
 import com.iskeru.splitwise.expenses.model.SplitWiseUpdateExpense;
+import com.iskeru.splitwise.utils.SplitWiseConstants;
 
 @Path("/api/v3.0/")
 @Consumes({ MediaType.APPLICATION_JSON })
@@ -25,14 +27,19 @@ public interface SplitWiseExpensesApi {
 	@GET
 	@Path("/get_expenses")
 	public SplitWiseExpensesResponse getExpenses(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
-			@QueryParam("friend_id") Long friendId,
-			// 2012-07-27T06:17:09Z
+			@QueryParam("friend_id") Long friendId,//
 			@QueryParam("dated_after") //
-			@JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ssX") //
-			Date after,
-			// 2012-07-27T06:17:09Z
-			@QueryParam("dated_before") String before,
+			@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN) //
+			Date after, //
+			@QueryParam("dated_before") //
+			@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN) //
+			Date before, //
 			@QueryParam("group_id") Long groupId);
+
+	@GET
+	@Path("/get_expenses")
+	public SplitWiseExpensesResponse getExpenses(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
+			@BeanParam ExpensesListRequest request);
 
 	@GET
 	@Path("/get_expense/{id}")
@@ -43,5 +50,10 @@ public interface SplitWiseExpensesApi {
 	@Path("/update_expense/{id}")
 	public SplitWiseExpensesResponse update(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
 			@PathParam(value = "id") Long id, SplitWiseUpdateExpense expense);
+
+	@POST
+	@Path("/create_expense")
+	public SplitWiseExpensesResponse create(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
+			SplitWiseUpdateExpense expense);
 
 }

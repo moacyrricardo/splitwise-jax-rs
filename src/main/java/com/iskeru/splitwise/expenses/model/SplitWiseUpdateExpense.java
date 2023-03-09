@@ -1,6 +1,7 @@
 package com.iskeru.splitwise.expenses.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +30,16 @@ public class SplitWiseUpdateExpense {
 	private BigDecimal cost;
 	private String description;
 	private String details;
+	@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN)
+	private Date date;
 
 	@JsonIgnore
 	private List<SplitWiseExpenseUser> users;
+
+	// repeat_interval="never"
+	private String repeatInterval;
+	// currency_code="USD"
+	private String currency_code;
 
 	@JsonAnyGetter
 	public Map<String, Object> getProperties() {

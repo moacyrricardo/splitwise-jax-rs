@@ -34,7 +34,7 @@ public class SplitWiseExpense {
 	@JsonProperty("user_id")
 	private Long userId;
 
-	@JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ss'Z'")
+	@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN)
 	private Date date;
 
 	private List<SplitWiseExpenseUser> users;
