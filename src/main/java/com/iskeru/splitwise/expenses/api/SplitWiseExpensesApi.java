@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iskeru.splitwise.expenses.model.ExpensesListRequest;
+import com.iskeru.splitwise.expenses.model.SplitWiseCreateExpense;
 import com.iskeru.splitwise.expenses.model.SplitWiseUpdateExpense;
 import com.iskeru.splitwise.utils.SplitWiseConstants;
 
@@ -54,6 +55,6 @@ public interface SplitWiseExpensesApi {
 	@POST
 	@Path("/create_expense")
 	public SplitWiseExpensesResponse create(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
-			SplitWiseUpdateExpense expense);
+			SplitWiseCreateExpense expense);
 
 }

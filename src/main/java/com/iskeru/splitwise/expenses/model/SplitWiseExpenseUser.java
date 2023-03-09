@@ -7,10 +7,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.iskeru.splitwise.users.model.SplitWiseUser;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)

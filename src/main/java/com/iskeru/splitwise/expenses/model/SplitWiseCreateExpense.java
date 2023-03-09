@@ -21,9 +21,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SplitWiseUpdateExpense {
+public class SplitWiseCreateExpense {
 	private static final String SEPARATOR = "__";
-	private Long id;
 	@JsonProperty("group_id")
 	@Builder.Default
 	private Long groupId = SplitWiseConstants.NO_GROUP;
@@ -42,6 +41,9 @@ public class SplitWiseUpdateExpense {
 	// currency_code="USD"
 	@JsonProperty("currency_code")
 	private String currencyCode;
+
+	@JsonProperty("split_equally")
+	private Boolean splitEqually;
 
 	@JsonAnyGetter
 	public Map<String, Object> getProperties() {
