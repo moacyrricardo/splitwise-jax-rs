@@ -7,28 +7,36 @@ import javax.ws.rs.QueryParam;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iskeru.splitwise.utils.SplitWiseConstants;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ExpensesListRequest {
 
 	@QueryParam("friend_id")
-	Long friendId;
+	private Long friendId;
+
 	@QueryParam("dated_after") //
 	@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN) //
-	Date after;
+	private Date after;
+
 	@QueryParam("dated_before") //
 	@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN) //
-	Date before;
+	private Date before;
 
 	@QueryParam("group_id")
-	Long groupId;
+	private Long groupId;
 
-	private Integer limit;
+	@Builder.Default
+	private Integer limit = 20;
 
-	private Integer offset;
+	@Builder.Default
+	private Integer offset = 0;
 
 	public ExpensesListRequest next() {
 		return ExpensesListRequest.builder()//
