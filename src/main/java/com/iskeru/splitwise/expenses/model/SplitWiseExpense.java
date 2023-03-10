@@ -37,9 +37,16 @@ public class SplitWiseExpense {
 	@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN)
 	private Date date;
 
+	@JsonProperty("repeat_interval")
+	private Repeat repeatInterval;
+
 	private List<SplitWiseExpenseUser> users;
 
 	private List<SplitWiseRepayment> repayments;
+
+	@JsonProperty("deleted_at")
+	@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN)
+	private Date deletedAt;
 
 	public LocalDateTime getDateTime() {
 		return date.toInstant().atZone(ZoneId.of("GMT")).toLocalDateTime();
