@@ -33,9 +33,11 @@ public class ExpensesListRequest {
 	private Long groupId;
 
 	@Builder.Default
+	@QueryParam("limit")
 	private Integer limit = 20;
 
 	@Builder.Default
+	@QueryParam("offset")
 	private Integer offset = 0;
 
 	public ExpensesListRequest next() {
