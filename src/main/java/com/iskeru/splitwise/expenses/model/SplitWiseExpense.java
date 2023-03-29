@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -50,5 +52,9 @@ public class SplitWiseExpense {
 
 	public LocalDateTime getDateTime() {
 		return date.toInstant().atZone(ZoneId.of("GMT")).toLocalDateTime();
+	}
+
+	public boolean isDelete() {
+		return Objects.isNull(getDeletedAt());
 	}
 }
