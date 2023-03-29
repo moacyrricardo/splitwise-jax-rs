@@ -54,7 +54,11 @@ public class SplitWiseExpense {
 		return date.toInstant().atZone(ZoneId.of("GMT")).toLocalDateTime();
 	}
 
-	public boolean isDelete() {
+	public boolean isDeleted() {
 		return Objects.isNull(getDeletedAt());
+	}
+
+	public boolean isNotDeleted() {
+		return !isDeleted();
 	}
 }
