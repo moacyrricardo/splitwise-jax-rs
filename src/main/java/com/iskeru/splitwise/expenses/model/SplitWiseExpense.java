@@ -55,7 +55,7 @@ public class SplitWiseExpense {
 	}
 
 	public boolean isDeleted() {
-		return Objects.isNull(getDeletedAt());
+		return Objects.nonNull(getDeletedAt());
 	}
 
 	public boolean isNotDeleted() {
