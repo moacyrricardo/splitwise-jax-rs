@@ -16,8 +16,11 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SplitWiseGroup {
 	private Long id;
+
 	private String name;
+
 	@JsonProperty("group_type")
-	private String groupType;
+	private Type groupType;
+
 	private List<SplitWiseUser> members;
 }
