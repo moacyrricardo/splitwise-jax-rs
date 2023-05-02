@@ -49,6 +49,20 @@ public interface SplitWiseExpensesApi {
 
 	@POST
 	@Path("/update_expense/{id}")
+	@Consumes({ MediaType.MULTIPART_FORM_DATA })
+	public SplitWiseExpensesResponse updateWithReceipt(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
+			@PathParam(value = "id") Long id, SplitWiseUpdateExpense expense);
+
+//    @PUT
+//    @Path("/{expenseId}")
+//    @Consumes(MediaType.MULTIPART_FORM_DATA)
+//    Expense updateExpense(
+//            @PathParam("expenseId") String expenseId,
+//            @Multipart(value = "expenseRequest", type = MediaType.APPLICATION_JSON) ExpenseRequest expenseRequest,
+//            @Nullable @Multipart(value = "receipt", type = MediaType.APPLICATION_OCTET_STREAM) InputStream receipt);
+
+	@POST
+	@Path("/update_expense/{id}")
 	public SplitWiseExpensesResponse update(@HeaderParam(HttpHeaders.AUTHORIZATION) String apiKey,
 			@PathParam(value = "id") Long id, SplitWiseUpdateExpense expense);
 

@@ -17,4 +17,5 @@ public class SplitWiseUser {
 	private String firstName;
 	@JsonProperty("last_name")
 	private String lastName;
+	private String email;
 }
