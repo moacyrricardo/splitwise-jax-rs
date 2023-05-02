@@ -23,4 +23,13 @@ public class SplitWiseGroup {
 	private Type groupType;
 
 	private List<SplitWiseUser> members;
+
+	@JsonProperty("simplify_by_default")
+	private boolean simplifyByDefault;
+
+	@JsonProperty("original_debts")
+	private List<SplitWiseGroupDebt> originalDebts;
+
+	@JsonProperty("simplified_debts")
+	private List<SplitWiseGroupDebt> simplifiedDebts;
 }
