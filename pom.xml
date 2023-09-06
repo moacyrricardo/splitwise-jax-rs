@@ -51,5 +51,11 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+		<repository>
+			<id>github-deploy</id>
+			<name>GitHub OWNER REPO Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/moacyrricardo/splitwise-jax-rs</url>
+		</repository>
+	</distributionManagement>
 </project>
