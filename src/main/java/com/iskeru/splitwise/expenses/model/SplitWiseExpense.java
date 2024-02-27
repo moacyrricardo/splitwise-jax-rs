@@ -3,6 +3,7 @@ package com.iskeru.splitwise.expenses.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -58,8 +59,20 @@ public class SplitWiseExpense {
 	@JsonFormat(pattern = SplitWiseConstants.DATE_PATTERN)
 	private Date deletedAt;
 
-	public LocalDateTime getDateTime() {
-		return date.toInstant().atZone(ZoneId.of("GMT")).toLocalDateTime();
+	/**
+	 * LocalDateTime as GMT
+	 * @return the {@link SplitWiseExpense#getDate()} as an {{@link OffsetDateTime}}
+	 */
+	public OffsetDateTime getDateAsOffsetDateTime() {
+		return date.toInstant().atZone(ZoneId.of("GMT")).toOffsetDateTime();
+	}
+
+	/**
+	 * LocalDateTime on machine's zone via {@link ZoneId#systemDefault()}
+	 * @return the {@link SplitWiseExpense#getDate()} as an {@link LocalDateTime}
+	 */
+	public LocalDateTime getDateAsLocalDateTime() {
+		return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 	}
 
 	public boolean isDeleted() {
