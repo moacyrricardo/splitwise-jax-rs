@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.iskeru</groupId>
 	<artifactId>splitwise-jax-rs</artifactId>
-	<version>2.0.0</version>
+	<version>2.1.0</version>
 	<name>splitwise-jax-rs</name>
 	<description>A simple set of interfaces mapping splitwise apis</description>
 	<properties>
@@ -35,6 +35,12 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>4.5.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>

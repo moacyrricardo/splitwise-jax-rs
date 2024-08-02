@@ -69,21 +69,40 @@ public class SplitWiseCreateExpense {
 	
 	public static final List<SplitWiseExpenseUser> buildUsersFromGroupEqually(SplitWiseUser user, SplitWiseGroup group,
 			BigDecimal value) {
-		BigDecimal cost = value;
+		BigDecimal cost = value.abs();
+
 		BigDecimal userCount = new BigDecimal(group.getMembers().size());
-		BigDecimal costPerUser = value.divide(userCount).setScale(2, RoundingMode.FLOOR);
-		BigDecimal costPerUserSum = costPerUser.multiply(userCount.subtract(BigDecimal.ONE));
-		BigDecimal userCost = cost.subtract(costPerUserSum);
+		BigDecimal countOtherUsers = userCount.subtract(BigDecimal.ONE);
+
+		BigDecimal costPerUser = cost.divide(userCount).setScale(2, RoundingMode.FLOOR);
+
+		BigDecimal otherUsersCostSum = costPerUser.multiply(countOtherUsers);
+		BigDecimal userCost = cost.subtract(otherUsersCostSum);
 
 		List<SplitWiseExpenseUser> users = new ArrayList<>();
-		users.add(SplitWiseExpenseUser.builder().userId(user.getId()).paidShare(cost).owedShare(userCost).build());
+
+		//mutually exclusive, variables are here to make code below more readable
+		boolean isExpense = value.signum() == -1;
+		boolean isRefund = value.signum() == 1;
+
+		if (isExpense) {
+			users.add(SplitWiseExpenseUser.builder().userId(user.getId()).paidShare(cost).owedShare(userCost).build());
+		}
+		if (isRefund) {
+			users.add(SplitWiseExpenseUser.builder().userId(user.getId()).paidShare(userCost).owedShare(cost).build());
+		}
 
 		for (SplitWiseUser usr : group.getMembers()) {
 			if (usr.getId().equals(user.getId())) {
 				continue;
 			}
-			users.add(SplitWiseExpenseUser.builder().userId(usr.getId()).paidShare(BigDecimal.ZERO)
-					.owedShare(costPerUser).build());
+
+			if (isExpense) {
+				users.add(SplitWiseExpenseUser.builder().userId(usr.getId()).paidShare(BigDecimal.ZERO).owedShare(costPerUser).build());
+			}
+			if (isRefund) {
+				users.add(SplitWiseExpenseUser.builder().userId(usr.getId()).paidShare(userCost).owedShare(BigDecimal.ZERO).build());
+			}
 		}
 		return users;
 	}
