@@ -2,7 +2,7 @@ package com.iskeru.splitwise.expenses.model;
 
 import java.util.Date;
 
-import javax.ws.rs.QueryParam;
+import jakarta.ws.rs.QueryParam;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iskeru.splitwise.utils.SplitWiseConstants;
